@@ -12,3 +12,7 @@ A full-stack app that allows the users to draw doodles with their mouse.
 2. Install dependencies with `npm install`
 3. Start the server with `node server.js`
 4. Open `http://localhost:3000` in your browser
+
+## How to save the doodle
+
+Click the Save button to download a PNG version of the current image.
