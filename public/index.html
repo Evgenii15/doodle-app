@@ -29,7 +29,9 @@
         context.beginPath();
         context.moveTo(lastX, lastY);
         context.lineTo(e.clientX, e.clientY);
-        context.stroke();
+        context.strokeStyle = currentColor;
+context.stroke();
+socket.emit('color', currentColor);
         [lastX, lastY] = [e.clientX, e.clientY];
         socket.emit('draw', { lastX, lastY });
       }
@@ -47,9 +49,12 @@
         context.beginPath();
         context.moveTo(lastX, lastY);
         context.lineTo(data.lastX, data.lastY);
-        context.stroke();
+        context.strokeStyle = currentColor;
+context.stroke();
+socket.emit('color', currentColor);
         [lastX, lastY] = [data.lastX, data.lastY];
       });
     </script>
   </body>
 </html>
+let currentColor = 'black';

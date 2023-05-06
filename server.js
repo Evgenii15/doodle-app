@@ -15,7 +15,7 @@ io.on('connection', (socket) => {
   console.log('a user connected');
 
   socket.on('draw', (data) => {
-    socket.broadcast.emit('draw', data);
+    socket.broadcast.emit('draw', data); socket.broadcast.emit('color', data.color);
   });
 
   socket.on('disconnect', () => {
