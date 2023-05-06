@@ -11,8 +11,8 @@
   </head>
   <body>
     <canvas id='canvas'></canvas>
-    <script src='/socket.io/socket.io.js'></script>
-    <script>
+    <script src='/socket.io/socket.io.js'>});</script>
+    <script>document.addEventListener("DOMContentLoaded", function() {
 const saveButton = document.getElementById('save');
 saveButton.addEventListener('click', () => {
   const image = canvas.toDataURL();
@@ -58,7 +58,7 @@ saveButton.addEventListener('click', () => {
         context.stroke();
         [lastX, lastY] = [data.lastX, data.lastY];
       });
-    </script>
+    });</script>
   </body>
 </html>
 <button id='save'>Save</button>
