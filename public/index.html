@@ -13,6 +13,14 @@
     <canvas id='canvas'></canvas>
     <script src='/socket.io/socket.io.js'></script>
     <script>
+const saveButton = document.getElementById('save');
+saveButton.addEventListener('click', () => {
+  const image = canvas.toDataURL();
+  const link = document.createElement('a');
+  link.download = 'doodle.png';
+  link.href = image;
+  link.click();
+});
       const canvas = document.getElementById('canvas');
       const context = canvas.getContext('2d');
       const socket = io();
