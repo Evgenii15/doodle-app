@@ -42,7 +42,7 @@ saveButton.addEventListener('click', () => {
         socket.emit('draw', { lastX, lastY });
       }
 
-      canvas.addEventListener('mousedown', (e) => {
+      canvas.addEventListener('click', (e) => {
         context.beginPath();
         context.moveTo(e.clientX, e.clientY - 10);
         context.lineTo(e.clientX + 10, e.clientY + 10);
