@@ -43,6 +43,13 @@ saveButton.addEventListener('click', () => {
       }
 
       canvas.addEventListener('mousedown', (e) => {
+        context.beginPath();
+        context.moveTo(e.clientX, e.clientY - 10);
+        context.lineTo(e.clientX + 10, e.clientY + 10);
+        context.lineTo(e.clientX - 10, e.clientY + 10);
+        context.lineTo(e.clientX, e.clientY - 10);
+        context.stroke();
+        socket.emit('draw-star', { x: e.clientX, y: e.clientY });
         drawing = true;
         [lastX, lastY] = [e.clientX, e.clientY];
       });
@@ -53,6 +60,12 @@ saveButton.addEventListener('click', () => {
 
       socket.on('draw', (data) => {
         context.beginPath();
+        context.moveTo(data.lastX, data.lastY - 10);
+        context.lineTo(data.lastX + 10, data.lastY + 10);
+        context.lineTo(data.lastX - 10, data.lastY + 10);
+        context.lineTo(data.lastX, data.lastY - 10);
+        context.stroke();
+        context.beginPath();
         context.moveTo(lastX, lastY);
         context.lineTo(data.lastX, data.lastY);
         context.stroke();
@@ -62,3 +75,4 @@ saveButton.addEventListener('click', () => {
   </body>
 </html>
 <button id='save'>Save</button>
+socket.on('draw-star', (data) => {        context.beginPath();        context.moveTo(data.x, data.y - 10);        context.lineTo(data.x + 10, data.y + 10);        context.lineTo(data.x - 10, data.y + 10);        context.lineTo(data.x, data.y - 10);        context.stroke();      });
